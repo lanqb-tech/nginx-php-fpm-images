@@ -1,6 +1,6 @@
 FROM php:7.2.4-fpm-alpine
 
-LABEL maintainer="bruin 814878862@qq.com"
+LABEL maintainer="Ric Harvey <ric@ngd.io>"
 
 ENV php_conf /usr/local/etc/php-fpm.conf
 ENV fpm_conf /usr/local/etc/php-fpm.d/www.conf
@@ -66,7 +66,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
     --add-module=/usr/src/lua-nginx-module-$LUA_MODULE_VERSION \
   " \
   && addgroup -S nginx \
-  && adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \ 
+  && adduser -D -S -h /var/cache/nginx -s /sbin/nologin -G nginx nginx \
   && apk add --no-cache --virtual .build-deps \
     autoconf \
     gcc \
@@ -105,7 +105,7 @@ RUN GPG_KEYS=B0F4253373F8F6F510D42178520A9993A1C052F8 \
   && tar -zxC /usr/src -f nginx.tar.gz \
   && tar -zxC /usr/src -f ndk.tar.gz \
   && tar -zxC /usr/src -f lua.tar.gz \
-  && rm nginx.tar.gz ndk.tar.gz lua.tar.gz \ 
+  && rm nginx.tar.gz ndk.tar.gz lua.tar.gz \
   && cd /usr/src/nginx-$NGINX_VERSION \
   && ./configure $CONFIG --with-debug \
   && make -j$(getconf _NPROCESSORS_ONLN) \
@@ -194,9 +194,9 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
       --with-png-dir=/usr/include/ \
       --with-jpeg-dir=/usr/include/ && \
     #curl iconv session
-    docker-php-ext-install pdo_mysql pdo_sqlite mysqli mcrypt gd exif intl xsl json soap dom zip opcache && \
+    #docker-php-ext-install pdo_mysql pdo_sqlite mysqli mcrypt gd exif intl xsl json soap dom zip opcache && \
     docker-php-ext-install iconv pdo_mysql pdo_sqlite mysqli gd exif intl xsl json soap dom zip opcache && \
-    pecl install xdebug && \
+    #pecl install xdebug && \
     docker-php-source delete && \
     mkdir -p /etc/nginx && \
     mkdir -p /var/www/app && \
