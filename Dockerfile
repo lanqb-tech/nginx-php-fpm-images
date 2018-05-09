@@ -193,7 +193,7 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
    #   --with-freetype-dir=/usr/include/ \
    #   --with-png-dir=/usr/include/ \
    #   --with-jpeg-dir=/usr/include/ && \
-    tzdata && \
+   # tzdata && \
     cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
     echo "Asia/Shanghai" > /etc/timezone && \
     pecl install xdebug && \
