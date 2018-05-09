@@ -166,7 +166,7 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     supervisor \
     curl \
     libcurl \
-    git \
+    #git \
     python \
     python-dev \
     py-pip \
@@ -194,8 +194,8 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
    #   --with-png-dir=/usr/include/ \
    #   --with-jpeg-dir=/usr/include/ && \
    # tzdata && \
-    cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
-    echo "Asia/Shanghai" > /etc/timezone && \
+   # cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+   # echo "Asia/Shanghai" > /etc/timezone && \
     pecl install xdebug && \
     docker-php-ext-enable xdebug && \
     docker-php-ext-configure gd \
@@ -221,6 +221,8 @@ RUN echo @testing http://nl.alpinelinux.org/alpine/edge/testing >> /etc/apk/repo
     pip install -U certbot && \
     mkdir -p /etc/letsencrypt/webrootauth && \
     apk del gcc musl-dev linux-headers libffi-dev augeas-dev python-dev make autoconf
+    && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
+    && echo "Asia/Shanghai" > /etc/timezone
 #    ln -s /usr/bin/php7 /usr/bin/php
 
 ADD conf/supervisord.conf /etc/supervisord.conf
