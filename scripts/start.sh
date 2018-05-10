@@ -139,9 +139,9 @@ if [ ! -z "$PHP_UPLOAD_MAX_FILESIZE" ]; then
 fi
 
 # Set Xdebug port
-if [ ! -z "$XDEBUG_PORT" ]; then
-    sed -i "s/xdebug.remote_port=9000/xdebug.remote_port=$XDEBUG_PORT/" /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
-fi
+#if [ ! -z "$XDEBUG_PORT" ]; then
+#    sed -i "s/xdebug.remote_port=9000/xdebug.remote_port=$XDEBUG_PORT/" /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+#fi
 
 # Enable xdebug
 XdebugFile='/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini'
